@@ -4,7 +4,7 @@ module.exports = async function(req,res) {
   res.setHeader('X-Content-Type-Options','nosniff');
   if(req.method !== 'POST') return res.status(405).json({error:'Method not allowed'});
   const password=process.env.PERSONAL_APP_PASSWORD, token=process.env.NOTION_TOKEN;
-  if(!password || password.length<20 || !token) return res.status(503).json({error:'Personal connection not configured'});
+  if(!password || password.length<12 || !token) return res.status(503).json({error:'Personal connection not configured'});
   const supplied=req.headers.authorization;
   const hash=s=>crypto.createHash('sha256').update(s).digest();
   if(typeof supplied!=='string'||!crypto.timingSafeEqual(hash(supplied),hash('Bearer '+password))) return res.status(401).json({error:'Authentication required'});
