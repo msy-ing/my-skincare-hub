@@ -144,14 +144,23 @@ main>header{position:relative;gap:8px;margin-bottom:10px}
  #todayControls .routine-controls button{font-size:11px;padding-inline:2px}
  #dailyTitle{font-size:18px}
 }
-.notion-product-photo{display:block;width:min(100%,180px);height:150px;object-fit:contain;margin:8px 0;background:#fff;border-radius:10px}</style></head><body><main><header><div class="brand"><span class="mark"><svg aria-hidden="true" viewBox="0 0 40 40" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 5C17 12 10 18 10 25a10 10 0 0 0 20 0C30 18 23 12 20 5Z"/><path d="M15 25c0 4 3 6 6 6M29 5v8m-4-4h8"/></svg></span><div>My Skincare Hub<small>Your skin. Your routine.</small></div></div><div class="header-actions"><details class="theme-menu"><summary aria-label="Choose colour theme"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18h1.5a2 2 0 0 0 1.4-3.4 1.5 1.5 0 0 1 1.1-2.6h2a3 3 0 0 0 3-3c0-5-4-9-9-9Z"/><circle cx="7.5" cy="10" r=".7"/><circle cx="11" cy="6.5" r=".7"/><circle cx="16" cy="8" r=".7"/><circle cx="7" cy="15" r=".7"/></svg></summary><div><button data-theme="blue"><i style="background:#456E9D"></i>Korean Studio Blue</button><button data-theme="sage"><i style="background:#426650"></i>Botanical Sage</button><button data-theme="beige"><i style="background:#80624F"></i>Luxury Beige</button></div></details><details id="personalDetails" class="profile-menu"><summary aria-label="Private Notion profile"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/></svg><span class="profile-connected" hidden></span></summary><div class="profile-popover"><h2>Private Notion profile</h2><form id="personalLogin"><label>Personal password <span style="display:flex;gap:6px;align-items:center"><input id="personalPassword" type="password" autocomplete="current-password" required minlength="12" style="flex:1;min-width:0"><button type="button" id="togglePassword" aria-label="Show password" aria-pressed="false" style="flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path id="passwordSlash" d="m3 3 18 18" hidden/></svg></button></span></label><button class="primary" type="submit">Connect</button></form><button id="personalLogout" hidden>Sign out</button><button id="refreshNotion" hidden>Refresh Notion</button><p id="personalStatus" role="status"></p><div id="personalData"></div></div></details></div></header><section class="panel" data-tab="products" hidden><div class="eyebrow">Your collection</div><h2>My products</h2><details><summary>Add or edit products</summary><label>One product per line<textarea id="products" placeholder="Enter products you own"></textarea></label><button id="saveProducts" class="primary">Save inventory</button></details><div class="row"><input id="searchProducts" placeholder="Search products" style="min-width:0;flex:1"><button id="viewProducts">Grid</button></div><div class="row" style="margin-top:10px"><select id="categoryFilter" aria-label="Filter category" style="width:100%"></select></div><div id="inventory"></div><div id="privateControls" hidden><label><input type="checkbox" id="finishPrivate"> Finish first only</label><small>Read-only collection synced from Notion</small></div><div id="privateCollection" hidden></div></section><section class="panel" data-tab="week" hidden><div class="eyebrow">Plan your week</div><h2>Weekly</h2><div id="weeklySettings" hidden><div class="hub-pills" aria-label="Week"><button data-cycle="0">Week 1</button><button data-cycle="1">Week 2</button></div><div id="weeklyControls"></div></div><table id="weeklyTable"><thead><tr><th>Day</th><th>☼ AM</th><th>☾ PM</th></tr></thead><tbody id="privateWeek" hidden></tbody><tbody id="week"></tbody></table><p id="weeklyNotice" class="routine-note" hidden>AA late · preview pending clinician approval</p></section><section class="panel" data-tab="today"><div class="today-heading"><div><small id="dailyCycle"></small><h2 id="dailyTitle">Daily checklist</h2></div><div class="period-buttons"><button id="am"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button><button id="pm"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.7 13.7A8.8 8.8 0 1 1 10.3 3.3a7.1 7.1 0 0 0 10.4 10.4Z"/></svg></button></div></div><nav id="days"></nav><div id="todayControls"><div class="hub-pills routine-controls" id="routineControls"><div role="group" aria-label="Skin condition"><button data-mode="normal">Normal</button><button data-mode="gentle">Sensitive</button></div><div role="group" aria-label="Skinoren placement"><button data-placement="early">AA early</button><button data-placement="late">AA late</button></div></div><label class="check-toggle" aria-label="Enable checklist"><input type="checkbox" id="track" aria-label="Enable checklist"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 12 2.5 2.5L16 9"/></svg></span></label></div><details><summary><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="white"/><circle cx="15" cy="17" r="2" fill="white"/></svg> Edit routine</summary><label>Ordered steps (one per line)<textarea id="steps" placeholder="Cleanser&#10;Moisturiser&#10;Sunscreen (AM)"></textarea></label><div class="row"><select id="pickProduct" aria-label="Choose inventory product" style="flex:1;min-width:0"></select><button id="appendProduct">Add</button></div><div id="orderSteps"></div><button id="saveSteps" class="primary">Save routine</button></details><p id="count" class="hint"></p><div id="checks"></div><div id="privateToday" hidden></div><button id="reset" hidden>Reset checklist</button><footer class="routine-disclaimer"><p id="todayPlacementNotice" hidden><small>AA late · preview pending clinician approval</small></p><p><small>Follow prescribed medication instructions. This tool does not validate treatment combinations.</small></p></footer></section><section class="panel" data-tab="guide" hidden><div class="eyebrow">Your reference</div><h2>Table 2 · Layering guide</h2><div id="privateGuide" hidden></div><div id="localGuide"><table class="guide-table"><thead><tr><th>Step</th><th>AM ☀</th><th>PM ☾</th></tr></thead><tbody><tr><th>1</th><td>Cleanser</td><td>Cleanser</td></tr><tr><th>2</th><td>Toner / essence</td><td>Toner / essence</td></tr><tr><th>3</th><td>Treatment / hydration</td><td>Treatment / hydration</td></tr><tr><th>4</th><td>Moisturiser</td><td>Moisturiser</td></tr><tr><th>5</th><td>Sunscreen</td><td>—</td></tr></tbody></table><p class="hint">General cosmetic guide. Follow prescribed medication directions.</p><label>Personal layering and substitution notes<textarea id="notes"></textarea></label><button id="saveNotes">Save notes</button></div></section><section class="panel" data-tab="ai" hidden><div class="ai-hero"><div class="eyebrow">AI skincare planner</div><h2>Better routines.<br>Not more products.</h2><p>Make the most of the skincare you already own.</p></div><p>AI generation is not connected yet. The manual planner is available now.</p></section><section class="panel" data-tab="guide" id="localBackup" hidden><h2>Local backup</h2><p>Back up routines entered on this device.</p><button id="export">Export backup</button><label>Import backup <input type="file" id="import" accept="application/json"></label></section></main><div class="tabs" aria-label="Navigation"><button data-go="today" class="active"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>Today</button><button data-go="week"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18m-13 4h2m4 0h2m-8 3h2m4 0h2"/></svg>Weekly</button><button data-go="products"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Zm0 18v-9m-9-4 9 4 9-4M7.5 5.5l9 5"/></svg>Products</button><button data-go="guide"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg>Guide</button><button data-go="ai"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM5 3v4M3 5h4m12 10v6m-3-3h6"/></svg>AI</button></div><script>
+.notion-product-photo{display:block;width:min(100%,180px);height:150px;object-fit:contain;margin:8px 0;background:#fff;border-radius:10px}
+#todayControls{gap:7px}
+#guideControls .routine-controls{margin:8px 0 12px}
+.step-function svg{display:block;flex:none}
+:is(.weekly-cards,.routine-card) :is([data-function=Brighten],[data-function=Firming],[data-function=AA]){color:var(--weekly-active)}
+:is(.weekly-cards,.routine-card) :is([data-function=Tone],[data-function=Cleanse],[data-function=SPF]){color:var(--weekly-hydr)}
+#privateGuide .guide-section{margin:8px 0;border:1px solid var(--line);border-radius:10px;padding:0 9px}
+#privateGuide .guide-section>summary{padding:10px 0;color:var(--ink)}
+#privateGuide .guide-section>section{margin:0 0 8px}
+</style></head><body><main><header><div class="brand"><span class="mark"><svg aria-hidden="true" viewBox="0 0 40 40" width="32" height="32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M20 5C17 12 10 18 10 25a10 10 0 0 0 20 0C30 18 23 12 20 5Z"/><path d="M15 25c0 4 3 6 6 6M29 5v8m-4-4h8"/></svg></span><div>My Skincare Hub<small>Your skin. Your routine.</small></div></div><div class="header-actions"><details class="theme-menu"><summary aria-label="Choose colour theme"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18h1.5a2 2 0 0 0 1.4-3.4 1.5 1.5 0 0 1 1.1-2.6h2a3 3 0 0 0 3-3c0-5-4-9-9-9Z"/><circle cx="7.5" cy="10" r=".7"/><circle cx="11" cy="6.5" r=".7"/><circle cx="16" cy="8" r=".7"/><circle cx="7" cy="15" r=".7"/></svg></summary><div><button data-theme="blue"><i style="background:#456E9D"></i>Korean Studio Blue</button><button data-theme="sage"><i style="background:#426650"></i>Botanical Sage</button><button data-theme="beige"><i style="background:#80624F"></i>Luxury Beige</button></div></details><details id="personalDetails" class="profile-menu"><summary aria-label="Private Notion profile"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20v-1a5 5 0 0 1 5-5h4a5 5 0 0 1 5 5v1"/></svg><span class="profile-connected" hidden></span></summary><div class="profile-popover"><h2>Private Notion profile</h2><form id="personalLogin"><label>Personal password <span style="display:flex;gap:6px;align-items:center"><input id="personalPassword" type="password" autocomplete="current-password" required minlength="12" style="flex:1;min-width:0"><button type="button" id="togglePassword" aria-label="Show password" aria-pressed="false" style="flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/><path id="passwordSlash" d="m3 3 18 18" hidden/></svg></button></span></label><button class="primary" type="submit">Connect</button></form><button id="personalLogout" hidden>Sign out</button><button id="refreshNotion" hidden>Refresh Notion</button><p id="personalStatus" role="status"></p><div id="personalData"></div></div></details></div></header><section class="panel" data-tab="products" hidden><div class="eyebrow">Your collection</div><h2>My products</h2><details><summary>Add or edit products</summary><label>One product per line<textarea id="products" placeholder="Enter products you own"></textarea></label><button id="saveProducts" class="primary">Save inventory</button></details><div class="row"><input id="searchProducts" placeholder="Search products" style="min-width:0;flex:1"><button id="viewProducts">Grid</button></div><div class="row" style="margin-top:10px"><select id="categoryFilter" aria-label="Filter category" style="width:100%"></select></div><div id="inventory"></div><div id="privateControls" hidden><label><input type="checkbox" id="finishPrivate"> Finish first only</label><small>Read-only collection synced from Notion</small></div><div id="privateCollection" hidden></div></section><section class="panel" data-tab="week" hidden><div class="eyebrow">Plan your week</div><h2>Weekly</h2><div id="weeklySettings" hidden><div class="hub-pills" aria-label="Week"><button data-cycle="0">Week 1</button><button data-cycle="1">Week 2</button></div><div id="weeklyControls"></div></div><table id="weeklyTable"><thead><tr><th>Day</th><th>☼ AM</th><th>☾ PM</th></tr></thead><tbody id="privateWeek" hidden></tbody><tbody id="week"></tbody></table><p id="weeklyNotice" class="routine-note" hidden>AA late · preview pending clinician approval</p></section><section class="panel" data-tab="today"><div class="today-heading"><div><small id="dailyCycle"></small><h2 id="dailyTitle">Daily checklist</h2></div><div class="period-buttons"><button id="am"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg></button><button id="pm"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.7 13.7A8.8 8.8 0 1 1 10.3 3.3a7.1 7.1 0 0 0 10.4 10.4Z"/></svg></button></div></div><nav id="days"></nav><div id="todayControls"><div class="hub-pills routine-controls" id="routineControls"><div role="group" aria-label="Skin condition"><button data-mode="normal">Normal</button><button data-mode="gentle">Sensitive</button></div><div role="group" aria-label="Skinoren placement"><button data-placement="early">AA early</button><button data-placement="late">AA late</button></div></div><label class="check-toggle" aria-label="Enable checklist"><input type="checkbox" id="track" aria-label="Enable checklist"><span aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 12 2.5 2.5L16 9"/></svg></span></label></div><details><summary><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 17h16"/><circle cx="9" cy="7" r="2" fill="white"/><circle cx="15" cy="17" r="2" fill="white"/></svg> Edit routine</summary><label>Ordered steps (one per line)<textarea id="steps" placeholder="Cleanser&#10;Moisturiser&#10;Sunscreen (AM)"></textarea></label><div class="row"><select id="pickProduct" aria-label="Choose inventory product" style="flex:1;min-width:0"></select><button id="appendProduct">Add</button></div><div id="orderSteps"></div><button id="saveSteps" class="primary">Save routine</button></details><p id="count" class="hint"></p><div id="checks"></div><div id="privateToday" hidden></div><button id="reset" hidden>Reset checklist</button><footer class="routine-disclaimer"><p id="todayPlacementNotice" hidden><small>AA late · preview pending clinician approval</small></p><p><small>Follow prescribed medication instructions. This tool does not validate treatment combinations.</small></p></footer></section><section class="panel" data-tab="guide" hidden><div class="eyebrow">Your reference</div><h2>Table 2 · Layering guide</h2><div id="guideControls" hidden></div><div id="privateGuide" hidden></div><div id="localGuide"><table class="guide-table"><thead><tr><th>Step</th><th>AM ☀</th><th>PM ☾</th></tr></thead><tbody><tr><th>1</th><td>Cleanser</td><td>Cleanser</td></tr><tr><th>2</th><td>Toner / essence</td><td>Toner / essence</td></tr><tr><th>3</th><td>Treatment / hydration</td><td>Treatment / hydration</td></tr><tr><th>4</th><td>Moisturiser</td><td>Moisturiser</td></tr><tr><th>5</th><td>Sunscreen</td><td>—</td></tr></tbody></table><p class="hint">General cosmetic guide. Follow prescribed medication directions.</p><label>Personal layering and substitution notes<textarea id="notes"></textarea></label><button id="saveNotes">Save notes</button></div></section><section class="panel" data-tab="ai" hidden><div class="ai-hero"><div class="eyebrow">AI skincare planner</div><h2>Better routines.<br>Not more products.</h2><p>Make the most of the skincare you already own.</p></div><p>AI generation is not connected yet. The manual planner is available now.</p></section><section class="panel" data-tab="guide" id="localBackup" hidden><h2>Local backup</h2><p>Back up routines entered on this device.</p><button id="export">Export backup</button><label>Import backup <input type="file" id="import" accept="application/json"></label></section></main><div class="tabs" aria-label="Navigation"><button data-go="today" class="active"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>Today</button><button data-go="week"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18m-13 4h2m4 0h2m-8 3h2m4 0h2"/></svg>Weekly</button><button data-go="products"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5v8l-9 5-9-5V8l9-5Zm0 18v-9m-9-4 9 4 9-4M7.5 5.5l9 5"/></svg>Products</button><button data-go="guide"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></svg>Guide</button><button data-go="ai"><svg class="ui-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3ZM5 3v4M3 5h4m12 10v6m-3-3h6"/></svg>AI</button></div><script>
 const $=id=>document.getElementById(id), days=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'], letters=['M','T','W','T','F','S','S'], storage='skincare-hub-v1';
 const date=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Singapore',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 let state={products:[],routines:{},ticks:{},notes:''};try{const x=JSON.parse(localStorage.getItem(storage));if(x)state=x}catch{}
 let day=days.indexOf(new Intl.DateTimeFormat('en-US',{weekday:'short',timeZone:'Asia/Singapore'}).format(new Date())),period=Number(new Intl.DateTimeFormat('en-GB',{hour:'2-digit',hourCycle:'h23',timeZone:'Asia/Singapore'}).format(new Date()))<12?'AM':'PM',mode='normal';
 const key=(d=day,p=period,m=mode)=>d+'-'+p+'-'+m, lines=s=>s.split('\n').map(x=>x.trim()).filter(Boolean), save=()=>localStorage.setItem(storage,JSON.stringify(state)), routine=()=>state.routines[key()]||[], tickKey=()=>date()+'-'+key()+'-'+JSON.stringify(routine());
 function el(tag,t,parent){const e=document.createElement(tag);e.textContent=t;if(parent)parent.append(e);return e}
-function showTab(tab){document.querySelectorAll('.panel').forEach(p=>p.hidden=p.dataset.tab!==tab||(p.id==='localBackup'&&!!privateProducts));document.querySelectorAll('[data-go]').forEach(b=>b.classList.toggle('active',b.dataset.go===tab));routineControls.remove();$(tab==='week'&&privateProducts?'weeklyControls':'todayControls').prepend(routineControls);window.scrollTo(0,0)}document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>showTab(b.dataset.go));function render(){ $('products').value=state.products.map(x=>x.name).join('\n');$('notes').value=state.notes; $('inventory').replaceChildren();renderInventory();$('week').replaceChildren();days.forEach((d,i)=>{const r=el('tr','',$('week'));el('th',d,r);['AM','PM'].forEach(p=>{const c=el('td','',r),b=el('button',(state.routines[key(i,p)]||[]).join('\n')||'Set routine',c);b.onclick=()=>{day=i;period=p;renderDaily();showTab('today');document.querySelector('[data-tab=today] details').open=true}})});renderDaily()}
+function showTab(tab){document.querySelectorAll('.panel').forEach(p=>p.hidden=p.dataset.tab!==tab||(p.id==='localBackup'&&!!privateProducts));document.querySelectorAll('[data-go]').forEach(b=>b.classList.toggle('active',b.dataset.go===tab));placeRoutineControls(tab);if(tab==='guide'&&privateGuideBlocks)renderCurrentGuide();window.scrollTo(0,0)}document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>showTab(b.dataset.go));function render(){ $('products').value=state.products.map(x=>x.name).join('\n');$('notes').value=state.notes; $('inventory').replaceChildren();renderInventory();$('week').replaceChildren();days.forEach((d,i)=>{const r=el('tr','',$('week'));el('th',d,r);['AM','PM'].forEach(p=>{const c=el('td','',r),b=el('button',(state.routines[key(i,p)]||[]).join('\n')||'Set routine',c);b.onclick=()=>{day=i;period=p;renderDaily();showTab('today');document.querySelector('[data-tab=today] details').open=true}})});renderDaily()}
 const categories=['Uncategorised','Cleanser','Toner / essence','Serum / ampoule','Treatment','Moisturiser','Sunscreen','Mask','Other'], stocks=['Owned','Unopened','Finished'], repurchases=['Undecided','Priority','Optional','Alternative','Skip','Medical review'];
 function options(s,values,current){s.replaceChildren();values.forEach(v=>{const o=el('option',v,s);o.value=v});s.value=current}
 function renderInventory(){const root=$('inventory');root.replaceChildren();state.products.forEach(p=>{if(!stocks.includes(p.status)){p.repurchase=p.status==='Repurchase'?'Priority':p.status==='Skip'?'Skip':'Undecided';p.status='Owned'}p.category=categories.includes(p.category)?p.category:'Uncategorised';p.repurchase=repurchases.includes(p.repurchase)?p.repurchase:'Undecided';const card=el('article','',root);card.className='product-card';card.dataset.name=p.name.toLowerCase();card.dataset.category=p.category;if(p.photo&&/^https:\/\//i.test(p.photo)){const img=el('img','',card);img.src=p.photo;img.alt=p.name;img.referrerPolicy='no-referrer';img.loading='lazy';img.onerror=()=>img.hidden=true}el('strong',p.name,card);[['Category','category',categories],['Stock','status',stocks],['Repurchase','repurchase',repurchases]].forEach(([title,k,vals])=>{const l=el('label',title,card),s=el('select','',l);options(s,vals,p[k]);s.onchange=()=>{p[k]=s.value;save();renderInventory()}});const d=el('details','',card);el('summary','Product photo / notes',d);const photo=el('input','',d);photo.type='url';photo.placeholder='HTTPS image URL (optional)';photo.value=p.photo||'';photo.onchange=()=>{if(photo.value&&!/^https:\/\//i.test(photo.value)){alert('Use an HTTPS image URL');return}p.photo=photo.value;save();renderInventory()};const notes=el('textarea','',d);notes.placeholder='Product notes / substitutions';notes.value=p.notes||'';notes.onchange=()=>{p.notes=notes.value;save()}});filterProducts();refreshPicker()}
@@ -164,25 +173,54 @@ function renderChecks(){const a=routine(),k=tickKey(),t=state.ticks[k]||[],track
 $('saveProducts').onclick=()=>{state.products=[...new Set(lines($('products').value))].map(name=>state.products.find(p=>p.name===name)||{name,status:'Owned'});save();render()};$('saveSteps').onclick=()=>{state.routines[key()]=lines($('steps').value);save();render()};$('saveNotes').onclick=()=>{state.notes=$('notes').value;save()};$('am').onclick=()=>{period='AM';renderDaily()};$('pm').onclick=()=>{period='PM';renderDaily()};$('reset').onclick=()=>{delete state.ticks[tickKey()];save();renderChecks()};$('export').onclick=()=>{const a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.href=u;a.download='skincare-backup.json';a.click();URL.revokeObjectURL(u)};$('import').onchange=async e=>{try{const x=JSON.parse(await e.target.files[0].text());if(!Array.isArray(x.products)||!x.products.every(p=>typeof p.name==='string'&&['Owned','Unopened','Finished','Repurchase','Skip'].includes(p.status))||!x.routines||!Object.values(x.routines).every(a=>Array.isArray(a)&&a.every(s=>typeof s==='string'))||typeof x.notes!=='string')throw Error();if(confirm('Replace current local data?')){state={products:x.products,routines:x.routines,notes:x.notes,ticks:{}};save();render()}}catch{alert('Invalid backup')}};const pref=(k,v)=>{try{if(v!==undefined)localStorage.setItem(k,v);return localStorage.getItem(k)}catch{return null}};function theme(v){document.documentElement.dataset.theme=['blue','sage','beige'].includes(v)?v:'blue';pref('skin-theme',document.documentElement.dataset.theme)}theme(pref('skin-theme'));document.querySelectorAll('button[data-theme]').forEach(b=>b.onclick=()=>{theme(b.dataset.theme);document.querySelector('.theme-menu').open=false});$('track').checked=pref('skin-track')==='true';$('track').onchange=()=>{pref('skin-track',String($('track').checked));renderChecks();if(privateWeeks)renderPrivateToday()};function productView(){const grid=pref('skin-view')!=='list';$('inventory').classList.toggle('grid',grid);$('viewProducts').innerHTML=grid?"<svg class=\"ui-icon\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 6h13M8 12h13M8 18h13M3 6h1m-1 6h1m-1 6h1\"/></svg> List":"<svg class=\"ui-icon\" aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"3\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"3\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/><rect x=\"14\" y=\"14\" width=\"7\" height=\"7\" rx=\"1\"/></svg> Grid"}$('viewProducts').onclick=()=>{pref('skin-view',$('inventory').classList.contains('grid')?'list':'grid');productView()};options($('categoryFilter'),['All categories',...categories],'All categories');$('searchProducts').oninput=filterProducts;$('categoryFilter').onchange=()=>{filterProducts();renderPrivateCollection()};$('steps').oninput=renderOrder;$('appendProduct').onclick=()=>{const p=$('pickProduct').value;if(p==='Choose a product…')return;$('steps').value=[...lines($('steps').value),p].join('\n');renderOrder()};productView();let last=date();setInterval(()=>{if(date()!==last){last=date();renderChecks()}},30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderChecks()});render();
  
 const routineControls=$('routineControls');
+function placeRoutineControls(tab){
+ const target=privateProducts&&tab==='week'?'weeklyControls':privateProducts&&tab==='guide'?'guideControls':'todayControls';
+ $(target).prepend(routineControls);
+}
+let privateGuideBlocks=null;
 let privatePassword='', privateGeneration=0;
 var privateProducts=null, privateWeeks=null;
 const privateTicks=new Map();
 const rich=items=>(items||[]).map(item=>item.plain_text||item.text?.content||'').join('');
 const productGroups=['Prep','Toners','Serums & Essences','Hydration','Actives','Creams'];
+function guideApplicationRows(rows,header){
+ if(!header||!/^AM$/i.test(rows[0]?.[0])||!/^PM\b/i.test(rows[0]?.[1]))return rows;
+ if(mode==='gentle'){
+  const am=sensitiveSteps('AM'),pm=sensitiveSteps('PM');
+  return [['AM','PM'],...Array.from({length:Math.max(am.length,pm.length)},(_,i)=>[am[i]||'—',pm[i]||'—'])];
+ }
+ const output=rows.map(row=>[...row]);
+ output[0][1]='PM';
+ if(placement==='late'){
+  const pm=output.slice(1).map(row=>row[1]);
+  const aa=pm.findIndex(name=>/^Skinoren\b/i.test(name));
+  const repair=pm.findIndex(name=>/^Rejuall PDRN\b/i.test(name));
+  if(aa>=0&&repair>aa){
+   const [step]=pm.splice(aa,1);
+   pm.splice(repair,0,step);
+   for(let i=0;i<pm.length;i++)output[i+1][1]=pm[i];
+  }
+ }
+ return output;
+}
+function renderCurrentGuide(){
+ const root=$('privateGuide');
+ const expanded=new Map(Array.from(root.querySelectorAll('[data-guide-section]'),entry=>[entry.dataset.guideSection,entry.open]));
+ root.replaceChildren();
+ if(privateGuideBlocks)renderGuide(privateGuideBlocks,root,expanded);
+}
 function addGuideTable(parent,rows,hasHeader){
  const table=el('table','',parent);table.className='notion-guide-table';
- rows.forEach((cells,index)=>{
+ guideApplicationRows(rows,hasHeader).forEach((cells,index)=>{
   const header=index===0&&hasHeader;
   const row=el('tr','',header?table.createTHead():table.tBodies[0]||table.createTBody());
   cells.forEach(value=>{
-   const name=header&&/^PM\s*[—–-]\s*prescribed early placement$/i.test(value)?'PM':value;
-   const cell=el(header?'th':'td',name,row);
+   const cell=el(header?'th':'td',value,row);
    if(header)cell.scope='col';
   });
  });
 }
 function renderGuideInventory(parent){
- el('h3','2B · Full product collection',parent);
  for(const group of [...productGroups,'Other']){
   const products=privateProducts.filter(product=>(productGroups.includes(product.group)?product.group:'Other')===group);
   if(!products.length)continue;
@@ -200,10 +238,16 @@ function renderGuideInventory(parent){
   }
  }
 }
-function renderGuide(rows,parent){
+function renderGuide(rows,parent,expanded){
  let collectionShown=false, section=parent, pendingTable=[];
+ function createSection(key,title){
+  const details=el('details','',parent);details.className='guide-section';
+  details.dataset.guideSection=key;details.open=expanded.get(key)??(key==='2a');
+  el('summary',title,details);
+  return el('section','',details);
+ }
  function showCollection(){
-  if(!collectionShown){renderGuideInventory(el('section','',parent));collectionShown=true}
+  if(!collectionShown){renderGuideInventory(createSection('2b','2B · Full product collection'));collectionShown=true}
  }
  function flushTable(){
   if(!pendingTable.length)return;
@@ -213,11 +257,17 @@ function renderGuide(rows,parent){
  }
  function addHeading(value){
   flushTable();
-  if(/^substitut/i.test(value))showCollection();
-  section=el('section','',parent);
-  const title=/layering order/i.test(value)?'2A · AM & PM application order':/^substitut/i.test(value)?'2C · Substitution guide':value;
-  el('h3',title,section);
-  if(/^layering order/i.test(value))el('p','The PM column shows the prescribed application order. AA early / late changes the preview in Today and Weekly.',section).className='guide-context';
+  if(/^substitut/i.test(value)){
+   showCollection();section=createSection('2c','2C · Substitution guide');
+  }else if(/layering order/i.test(value)){
+   section=createSection('2a','2A · AM & PM application order');
+  }else{
+   section=el('section','',parent);el('h3',value,section);
+  }
+  if(/^layering order/i.test(value)){
+   const context=mode==='gentle'?'Sensitive routine · follow your prescriber’s advice for medication during flares.':placement==='late'?'AA late · preview pending clinician approval. Follow prescribed application directions.':'AA early · prescribed application order.';
+   el('p',context,section).className='guide-context';
+  }
  }
  function addText(text){
   for(const line of text.split('\n')){
@@ -277,25 +327,48 @@ function renderPrivateWeek(){
  });
 }
 function setPrivateView(active){
- for(const [id,visible] of [['weeklySettings',active],['privateWeek',active],['week',!active],['privateGuide',active],['localGuide',!active],['refreshNotion',active],['viewProducts',!active],['reset',!active&&$('track').checked]]){
+ for(const [id,visible] of [['guideControls',active],['weeklySettings',active],['privateWeek',active],['week',!active],['privateGuide',active],['localGuide',!active],['refreshNotion',active],['viewProducts',!active],['reset',!active&&$('track').checked]]){
   $(id).hidden=!visible;
  }
  document.querySelector('[data-tab=products] details').hidden=active;
  $('localBackup').hidden=active||!document.querySelector('[data-go=guide]').classList.contains('active');
  $('weeklyTable').classList.toggle('weekly-cards',active);
- if(active&&document.querySelector('[data-go=week]').classList.contains('active'))$('weeklyControls').append(routineControls);
+ placeRoutineControls(document.querySelector('[data-go].active')?.dataset.go);
  if(!active){$('todayControls').prepend(routineControls);$('privateWeek').replaceChildren();$('privateGuide').replaceChildren()}
  const values=active?[...new Set(privateProducts.map(product=>product.group).filter(Boolean))]:categories;
  const filter=$('categoryFilter');
  options(filter,['All categories',...values],values.includes(filter.value)?filter.value:'All categories');
 }
 
+const functionIcons={
+ Cleanse:'<path d="M12 3c-2 4-6 7-6 11a6 6 0 0 0 12 0c0-4-4-7-6-11Z"/>',
+ Hydrate:'<path d="M13 3c-2 4-6 7-6 11a6 6 0 1 0 12 0c0-4-4-7-6-11Z M5 6l-2 3a2 2 0 0 0 2 3"/>',
+ Repair:'<path d="M20 5a5 5 0 0 0-8 1 5 5 0 0 0-8-1c-4 4 1 9 8 15 7-6 12-11 8-15Z M5 12h4l2-3 2 6 2-3h4"/>',
+ Med:'<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3Z M12 8v7 M8.5 11.5h7"/>',
+ Soothe:'<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3Z"/>',
+ Prep:'<path d="M8 9h8v12H8z M10 9V5h4v4 M10 5V3h8 M20 4h1 M21 7h1"/>',
+ Exfoliate:'<path d="M12 3l2.3 6.7L21 12l-6.7 2.3L12 21l-2.3-6.7L3 12l6.7-2.3L12 3Z"/>',
+ Retinoid:'<path d="M9 3l1.5 4.5L15 9l-4.5 1.5L9 15l-1.5-4.5L3 9l4.5-1.5L9 3Z M18 12v8 M14 16h8"/>',
+ Brighten:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l2 2m10 10 2 2M5 19l2-2M17 7l2-2"/>',
+ Tone:'<path d="M9 3h6v4H9z M8 7h8l2 4v9a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-9l2-4Z M6 14h12"/>',
+ Firming:'<path d="m5 15 7-7 7 7 M5 21l7-7 7 7 M12 3v5"/>',
+ Cream:'<path d="M5 6h14v4H5z M6 10h12v9a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-9Z"/>',
+ AA:'<path d="M9 3h6 M10 3v6l-5 8a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-8V3 M8 15h8"/>',
+ SPF:'<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3Z"/><circle cx="12" cy="11" r="2.5"/>'
+};
 function stepFunction(name){
  const fixed={'Cleanser':'Cleanse','Gentle cleanser':'Cleanse','Sunscreen':'SPF','Sheet mask':'Hydrate','Rozex 0.75% Gel':'Med','Skinoren 20%':'Med','Medication as advised by prescriber':'Med','Winona Essence Water (if tolerated)':'Soothe','Bland moisturiser':'Cream'};
- return fixed[name]||privateProducts?.find(product=>product.name===name||product.fullName===name)?.function||'';
+ const normalize=value=>value.normalize('NFKC').toLowerCase().replace(/[^a-z0-9%]/g,'');
+ const key=normalize(name);
+ const product=privateProducts?.find(p=>normalize(p.name)===key||normalize(p.fullName)===key);
+ const fallback=[[/^pc [24]% bha|triple glow/i,'Exfoliate'],[/hydro cera|hada labo|joyruqoo/i,'Hydrate'],[/^winona/i,'Soothe'],[/dr althea 345|serum veil/i,'Prep'],[/^rejuall pdrn|^proya|^biorrier|^rejuran turnover/i,'Repair'],[/retinol|retino-mela/i,'Retinoid']];
+ return fixed[name]||product?.function||fallback.find(([pattern])=>pattern.test(name))?.[1]||'';
+}
+function sensitiveSteps(time){
+ return ['Gentle cleanser',...(time==='PM'?['Medication as advised by prescriber']:[]),'Winona Essence Water (if tolerated)','Bland moisturiser',...(time==='AM'?['Sunscreen']:[])];
 }
 function routineSteps(week,index,time,offset){
- if(mode==='gentle')return ['Gentle cleanser',...(time==='PM'?['Medication as advised by prescriber']:[]),'Winona Essence Water (if tolerated)','Bland moisturiser',...(time==='AM'?['Sunscreen']:[])];
+ if(mode==='gentle')return sensitiveSteps(time);
  let items=privateWeeks[week][index][time==='AM'?1:2].split('→').map(value=>value.trim()).filter(Boolean);
  if(time==='AM')return ['Cleanser',...items,'Sunscreen'];
  if(Math.floor(offset/14)%2!==0)items=items.map(value=>value==='IOPE Retinol 0.1%'?'Rejuall Retino-Mela Serum':value==='Rejuall Retino-Mela Serum'?'IOPE Retinol 0.1%':value);
@@ -338,8 +411,7 @@ function renderPrivateToday(){
  $('reset').hidden=true;
  steps.forEach((v,i)=>{const l=el('div','',card);l.className='private-step';el('small',String(i+1).padStart(2,'0'),l);const b=el('div','',l);el('strong',v,b);const note=v==='Rozex 0.75% Gel'?'Apply on dry skin · allow to dry ~5 min.':v==='Skinoren 20%'?'Apply as prescribed on clean dry skin.':v==='Sheet mask'?'Separate mask session before medication.':/Retinol|Retino-Mela/.test(v)?'Avoid eyelids and irritated skin.':'';if(note)el('small',note,b);const role=stepFunction(v);
  if(role){const badge=el('small','',l);badge.className='step-function';badge.dataset.function=role;
-  const icons={Cleanse:'<path d="M12 3c-2 4-6 7-6 11a6 6 0 0 0 12 0c0-4-4-7-6-11Z"/>',Hydrate:'<path d="M12 3c-2 4-6 7-6 11a6 6 0 0 0 12 0c0-4-4-7-6-11Z"/>',Repair:'<path d="M20 5a5 5 0 0 0-8 1 5 5 0 0 0-8-1c-4 4 1 9 8 15 7-6 12-11 8-15Z M5 12h4l2-3 2 6 2-3h4"/>',Med:'<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3Z M12 8v7 M8.5 11.5h7"/>'};
-  if(icons[role])badge.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true">'+icons[role]+'</svg>';
+  if(Object.hasOwn(functionIcons,role))badge.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+functionIcons[role]+'</svg>';
   badge.append(role);
  }
 
@@ -373,6 +445,7 @@ document.querySelectorAll('[data-mode],[data-placement],[data-cycle]').forEach(b
  if(d.placement)placement=d.placement;
  if(d.cycle)selectedWeek=Number(d.cycle);
  renderDaily();renderControls();renderPrivateWeek();
+ if(document.querySelector('[data-go=guide]').classList.contains('active'))renderCurrentGuide();
 });
 renderControls();$('am').setAttribute('aria-label','AM');$('pm').setAttribute('aria-label','PM');
 $('finishPrivate').onchange=renderPrivateCollection;
@@ -399,7 +472,7 @@ document.addEventListener('keydown',event=>{
  if(event.key!=='Escape')return;
  for(const menu of headerMenus)if(menu.open){menu.open=false;menu.querySelector('summary').focus()}
 });
-function clearPrivate(){privateTicks.clear();$('todayPlacementNotice').hidden=true;$('weeklyNotice').hidden=true;$('dailyCycle').textContent='';document.querySelector('[data-tab=today] details').hidden=false;$('count').hidden=false;privateWeeks=null;$('privateToday').hidden=true;$('privateToday').replaceChildren();$('checks').hidden=false;privateProducts=null;setPrivateView(false);$('privateControls').hidden=true;$('inventory').hidden=false;renderPrivateCollection();privateGeneration++;showPassword(false);privatePassword='';$('personalPassword').value='';$('personalData').replaceChildren();$('personalLogout').hidden=true;setProfileConnected(false);$('personalLogin').hidden=false;$('personalStatus').textContent='Disconnected';}
+function clearPrivate(){privateGuideBlocks=null;privateTicks.clear();$('todayPlacementNotice').hidden=true;$('weeklyNotice').hidden=true;$('dailyCycle').textContent='';document.querySelector('[data-tab=today] details').hidden=false;$('count').hidden=false;privateWeeks=null;$('privateToday').hidden=true;$('privateToday').replaceChildren();$('checks').hidden=false;privateProducts=null;setPrivateView(false);$('privateControls').hidden=true;$('inventory').hidden=false;renderPrivateCollection();privateGeneration++;showPassword(false);privatePassword='';$('personalPassword').value='';$('personalData').replaceChildren();$('personalLogout').hidden=true;setProfileConnected(false);$('personalLogin').hidden=false;$('personalStatus').textContent='Disconnected';}
 async function refreshPrivate(){
  
  if($('personalLogout').disabled||$('refreshNotion').disabled)return;
@@ -428,7 +501,7 @@ async function refreshPrivate(){
  setPrivateView(true);
  renderControls();if(privateWeeks)renderPrivateWeek();
  else{$('privateWeek').replaceChildren();const message=el('td','The Notion routine format could not be read.',el('tr','',$('privateWeek')));message.colSpan=3}
- $('privateGuide').replaceChildren();renderGuide(data.guide,$('privateGuide'));
+ privateGuideBlocks=data.guide;renderCurrentGuide();
  $('personalStatus').textContent='Notion connected · '+data.inventory.length+' products';$('personalLogin').hidden=true;$('personalLogout').hidden=false;setProfileConnected(true);if(password)$('personalDetails').open=false;
  }catch(e){if(generation!==privateGeneration)return;if(!privateProducts)clearPrivate();$('personalStatus').textContent=privateProducts?'Refresh failed. Showing last loaded data.':e.message;
  }finally{$('refreshNotion').disabled=false;}
