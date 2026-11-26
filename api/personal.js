@@ -6,8 +6,17 @@ module.exports = async function(req,res) {
   const password=process.env.PERSONAL_APP_PASSWORD, token=process.env.NOTION_TOKEN;
   if(!password || password.length<12 || !token) return res.status(503).json({error:'Personal connection not configured'});
   const supplied=req.headers.authorization;
+  const origin=req.headers.origin;if(origin&&origin!=='https://'+req.headers.host)return res.status(403).json({error:'Origin not allowed'});
   const hash=s=>crypto.createHash('sha256').update(s).digest();
-  if(typeof supplied!=='string'||!crypto.timingSafeEqual(hash(supplied),hash('Bearer '+password))) return res.status(401).json({error:'Authentication required'});
+  const sign=v=>crypto.createHmac('sha256',password).update('personal-session:'+v).digest('hex');
+  const equal=(a,b)=>typeof a==='string'&&crypto.timingSafeEqual(hash(a),hash(b));
+  const cookie=(req.headers.cookie||'').split(';').map(x=>x.trim()).find(x=>x.startsWith('__Host-skinSession='))?.split('=')[1]||'';
+  const [expiry,nonce,sig]=cookie.split('.');
+  const valid=Number(expiry)>Date.now()&&equal(sig,sign(expiry+'.'+nonce));
+  if(req.headers['x-personal-logout']==='1'){res.setHeader('Set-Cookie','__Host-skinSession=; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=0');return res.status(200).json({ok:true})}
+  if(!valid&&!equal(supplied,'Bearer '+password))return res.status(401).json({error:'Authentication required'});
+  const value=(Date.now()+30*86400000)+'.'+crypto.randomBytes(24).toString('hex');
+  res.setHeader('Set-Cookie','__Host-skinSession='+value+'.'+sign(value)+'; Path=/; Secure; HttpOnly; SameSite=Strict; Max-Age=2592000');
   const ids=['NOTION_ROUTINE_PAGE','NOTION_GUIDE_PAGE','NOTION_INVENTORY_SOURCE'].map(k=>process.env[k]);
   if(ids.some(x=>!x||!/^[a-f0-9-]{32,36}$/i.test(x))) return res.status(503).json({error:'Notion source configuration required'});
   async function read(path,body){
