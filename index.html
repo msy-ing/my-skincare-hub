@@ -85,14 +85,14 @@ $('togglePassword').onclick=()=>showPassword($('personalPassword').type==='passw
 
 function clearPrivate(){document.querySelector('[data-tab=today] details').hidden=false;$('count').hidden=false;privateWeeks=null;$('privateToday').hidden=true;$('privateToday').replaceChildren();$('checks').hidden=false;privateProducts=null;$('privateControls').hidden=true;$('inventory').hidden=false;renderPrivateCollection();privateGeneration++;showPassword(false);privatePassword='';$('personalPassword').value='';$('personalData').replaceChildren();$('personalLogout').hidden=true;$('personalLogin').hidden=false;$('personalStatus').textContent='Disconnected';}
 async function refreshPrivate(){
- if(!privatePassword)return;
+ 
  const generation=++privateGeneration;
  $('personalStatus').textContent='Connecting…';
  try{
- const r=await fetch('/api/personal',{method:'POST',headers:{Authorization:'Bearer '+privatePassword},cache:'no-store'});
+ const r=await fetch('/api/personal',{method:'POST',headers:privatePassword?{Authorization:'Bearer '+privatePassword}:{},credentials:'same-origin',cache:'no-store'});
  const data=await r.json();
  if(generation!==privateGeneration)return;
- if(!r.ok)throw Error(data.error||'Connection failed');
+ if(r.status===401&&!privatePassword){clearPrivate();return}if(!r.ok)throw Error(data.error||'Connection failed');privatePassword='';
  const root=$('personalData');root.replaceChildren();
  const rich=a=>(a||[]).map(t=>t.plain_text||t.text?.content||'').join('');
  const tables=[], rawLines=[];
@@ -116,7 +116,7 @@ async function refreshPrivate(){
  }catch(e){if(generation!==privateGeneration)return;clearPrivate();$('personalStatus').textContent=e.message;}
 }
 $('personalLogin').onsubmit=e=>{e.preventDefault();privatePassword=$('personalPassword').value;showPassword(false);$('personalPassword').value='';refreshPrivate()};
-$('personalLogout').onclick=clearPrivate;
-document.addEventListener('visibilitychange',()=>{if(!document.hidden&&privatePassword)refreshPrivate()});
-window.addEventListener('pagehide',clearPrivate);
+$('personalLogout').onclick=async()=>{await fetch('/api/personal',{method:'POST',headers:{'X-Personal-Logout':'1'}});clearPrivate()};
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refreshPrivate()});
+refreshPrivate();
 </script></body></html>
