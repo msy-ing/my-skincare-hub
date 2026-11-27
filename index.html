@@ -402,7 +402,7 @@ function renderPrivateToday(){
  const w=cycleWeek(n);
  $('dailyCycle').textContent='Week '+(w+1)+' · '+(period==='AM'?'Morning routine':'Evening routine');
  const steps=routineSteps(w,day,period,n);
- $('todayPlacementNotice').hidden=!(placement==='late'&&mode==='normal'&&period==='PM'&&steps.includes('Skinoren 20%'));
+ $('todayPlacementNotice').hidden=placement!=='late'||mode!=='normal';
  const card=el('div','',root);card.className='routine-card';
  const heading=el('div','',card);heading.className='routine-title';
  el('h3',routineFocus(steps),heading);el('small',steps.length+' steps',heading);
