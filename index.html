@@ -369,9 +369,9 @@ const sensitiveRotation={
   AM:['AESTURA Hydro Cera-HA','Rejuall LC Ceramide'],
   PM:['Hada Labo Premium Gold','Rejuall LC Ceramide']
  },
- genabelle:{
+ madecaMorning:{
   AM:['Hada Labo Premium Gold','Madeca Time Reverse'],
-  PM:['Genabelle PDRN Vita Toning','Rejuall LC Ceramide']
+  PM:['Hada Labo Premium Gold','Rejuall LC Ceramide']
  },
  hydrate:{
   AM:['AESTURA Hydro Cera-HA','Rejuall LC Ceramide'],
@@ -382,7 +382,7 @@ const sensitiveRotation={
   PM:['Your preferred hydrator','Your preferred cream']
  }
 };
-const sensitiveWeek=['refresh','genabelle','hydrate','refresh','genabelle','hydrate','flexible'];
+const sensitiveWeek=['refresh','madecaMorning','hydrate','refresh','madecaMorning','hydrate','flexible'];
 function sensitiveSteps(index,time){
  const [serum,cream]=sensitiveRotation[sensitiveWeek[index]][time];
  return ['Gentle cleanser',...(time==='PM'?['Medication as advised by prescriber']:[]),'Winona Essence Water (if tolerated)',serum,cream,...(time==='AM'?['Sunscreen']:[])];
