@@ -186,7 +186,7 @@ const productGroups=['Prep','Toners','Serums & Essences','Hydration','Actives','
 function guideApplicationRows(rows,header){
  if(!header||!/^AM$/i.test(rows[0]?.[0])||!/^PM\b/i.test(rows[0]?.[1]))return rows;
  if(mode==='gentle'){
-  const am=sensitiveSteps('AM'),pm=sensitiveSteps('PM');
+  const am=sensitiveSteps(day,'AM'),pm=sensitiveSteps(day,'PM');
   return [['AM','PM'],...Array.from({length:Math.max(am.length,pm.length)},(_,i)=>[am[i]||'—',pm[i]||'—'])];
  }
  const output=rows.map(row=>[...row]);
@@ -265,7 +265,7 @@ function renderGuide(rows,parent,expanded){
    section=el('section','',parent);el('h3',value,section);
   }
   if(/^layering order/i.test(value)){
-   const context=mode==='gentle'?'Sensitive routine · follow your prescriber’s advice for medication during flares.':placement==='late'?'AA late · preview pending clinician approval. Follow prescribed application directions.':'AA early · prescribed application order.';
+   const context=mode==='gentle'?'Sensitive routine · '+days[day]+' · follow your prescriber’s advice for medication during flares.':placement==='late'?'AA late · preview pending clinician approval. Follow prescribed application directions.':'AA early · prescribed application order.';
    el('p',context,section).className='guide-context';
   }
  }
@@ -357,18 +357,38 @@ const functionIcons={
  SPF:'<path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6l7-3Z"/><circle cx="12" cy="11" r="2.5"/>'
 };
 function stepFunction(name){
- const fixed={'Cleanser':'Cleanse','Gentle cleanser':'Cleanse','Sunscreen':'SPF','Sheet mask':'Hydrate','Rozex 0.75% Gel':'Med','Skinoren 20%':'Med','Medication as advised by prescriber':'Med','Winona Essence Water (if tolerated)':'Soothe','Bland moisturiser':'Cream'};
+ const fixed={'Cleanser':'Cleanse','Gentle cleanser':'Cleanse','Sunscreen':'SPF','Sheet mask':'Hydrate','Rozex 0.75% Gel':'Med','Skinoren 20%':'Med','Medication as advised by prescriber':'Med','Winona Essence Water (if tolerated)':'Soothe','Your preferred cream':'Cream','Your preferred hydrator':'Hydrate'};
  const normalize=value=>value.normalize('NFKC').toLowerCase().replace(/[^a-z0-9%]/g,'');
  const key=normalize(name);
  const product=privateProducts?.find(p=>normalize(p.name)===key||normalize(p.fullName)===key);
  const fallback=[[/^pc [24]% bha|triple glow/i,'Exfoliate'],[/hydro cera|hada labo|joyruqoo/i,'Hydrate'],[/^winona/i,'Soothe'],[/dr althea 345|serum veil/i,'Prep'],[/^rejuall pdrn|^proya|^biorrier|^rejuran turnover/i,'Repair'],[/retinol|retino-mela/i,'Retinoid']];
  return fixed[name]||product?.function||fallback.find(([pattern])=>pattern.test(name))?.[1]||'';
 }
-function sensitiveSteps(time){
- return ['Gentle cleanser',...(time==='PM'?['Medication as advised by prescriber']:[]),'Winona Essence Water (if tolerated)','Bland moisturiser',...(time==='AM'?['Sunscreen']:[])];
+const sensitiveRotation={
+ refresh:{
+  AM:['AESTURA Hydro Cera-HA','Rejuall LC Ceramide'],
+  PM:['Hada Labo Premium Gold','Rejuall LC Ceramide']
+ },
+ genabelle:{
+  AM:['Hada Labo Premium Gold','Madeca Time Reverse'],
+  PM:['Genabelle PDRN Vita Toning','Rejuall LC Ceramide']
+ },
+ hydrate:{
+  AM:['AESTURA Hydro Cera-HA','Rejuall LC Ceramide'],
+  PM:['AESTURA Hydro Cera-HA','Madeca Time Reverse']
+ },
+ flexible:{
+  AM:['Your preferred hydrator','Your preferred cream'],
+  PM:['Your preferred hydrator','Your preferred cream']
+ }
+};
+const sensitiveWeek=['refresh','genabelle','hydrate','refresh','genabelle','hydrate','flexible'];
+function sensitiveSteps(index,time){
+ const [serum,cream]=sensitiveRotation[sensitiveWeek[index]][time];
+ return ['Gentle cleanser',...(time==='PM'?['Medication as advised by prescriber']:[]),'Winona Essence Water (if tolerated)',serum,cream,...(time==='AM'?['Sunscreen']:[])];
 }
 function routineSteps(week,index,time,offset){
- if(mode==='gentle')return sensitiveSteps(time);
+ if(mode==='gentle')return sensitiveSteps(index,time);
  let items=privateWeeks[week][index][time==='AM'?1:2].split('→').map(value=>value.trim()).filter(Boolean);
  if(time==='AM')return ['Cleanser',...items,'Sunscreen'];
  if(Math.floor(offset/14)%2!==0)items=items.map(value=>value==='IOPE Retinol 0.1%'?'Rejuall Retino-Mela Serum':value==='Rejuall Retino-Mela Serum'?'IOPE Retinol 0.1%':value);
